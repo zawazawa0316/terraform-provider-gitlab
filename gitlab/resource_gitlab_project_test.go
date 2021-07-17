@@ -89,7 +89,7 @@ func TestAccGitlabProject_basic(t *testing.T) {
 						Archived:           true,
 						PackagesEnabled:    false,
 						PagesAccessLevel:   gitlab.DisabledAccessControl,
-						BuildCoverageRegex: "foo",
+						BuildCoverageRegex: "bar",
 					}, &received),
 				),
 			},
@@ -891,6 +891,7 @@ resource "gitlab_project" "foo" {
   # So that acceptance tests can be run in a gitlab organization
   # with no billing
   visibility_level = "public"
+  build_coverage_regex = "foo"
 }
 	`, rInt, rInt, rInt)
 }
@@ -917,6 +918,7 @@ resource "gitlab_project" "foo" {
   # So that acceptance tests can be run in a gitlab organization
   # with no billing
   visibility_level = "public"
+  build_coverage_regex = "foo"
 }
 	`, rInt, rInt, rInt, rInt, rInt)
 }
@@ -947,6 +949,7 @@ resource "gitlab_project" "foo" {
   only_allow_merge_if_pipeline_succeeds = true
   only_allow_merge_if_all_discussions_are_resolved = true
   pages_access_level = "public"
+  build_coverage_regex = "foo"
 }
 	`, rInt, rInt, defaultBranchStatement)
 }
@@ -1014,7 +1017,7 @@ resource "gitlab_project" "foo" {
   archived = true
   packages_enabled = false
   pages_access_level = "disabled"
-  "build_coverage_regex" = "bar"
+  build_coverage_regex = "bar"
 }
 	`, rInt, rInt)
 }
